@@ -222,7 +222,7 @@ impl<'de, R: Read, B: BufferedXmlReader<R>> Deserializer<R, B> {
         }
         self.read_inner_value::<V, String, _>(|this| {
             if let XmlEvent::EndElement { .. } = *this.peek()? {
-                return Ok("".into());
+                return Ok("0".into());
             }
 
             expect!(this.next()?, XmlEvent::Characters(s) => {
